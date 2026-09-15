@@ -82,7 +82,8 @@ main{flex:1;padding:24px 0 60px}
   background:linear-gradient(180deg,rgba(7,11,24,.82),rgba(7,11,24,.35));
   border-bottom:1px solid var(--border-soft)}
 .topbar-in{display:flex;align-items:center;gap:14px;padding:12px 0}
-.brand{display:flex;align-items:center;gap:11px;cursor:pointer;user-select:none;border:0;background:none;color:inherit;font-family:inherit;padding:0}
+.brand{display:flex;align-items:center;gap:11px;cursor:pointer;user-select:none;border:0;background:none;
+  color:inherit;font-family:inherit;padding:0;text-decoration:none}
 .brand-logo{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font-size:20px;
   background:linear-gradient(140deg,var(--brand),var(--brand-2));
   box-shadow:0 8px 24px rgba(var(--glow),.5),0 0 0 1px rgba(var(--glow-2),.25) inset}
@@ -395,4 +396,67 @@ footer{border-top:1px solid var(--border-soft);padding:22px 0;color:var(--muted)
 }
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms !important;transition-duration:.01ms !important}
+}
+
+/* ==========================================================================
+   Portada del área de Formación
+   ========================================================================== */
+.nav-actual{padding:8px 14px;background:rgba(var(--glow),.16);border-color:rgba(var(--glow-soft),.4);color:#dce8ff}
+a.btn{text-decoration:none}
+a.course-card{text-decoration:none;display:block}
+.fx-intro{margin:-6px 0 18px;font-size:14.5px;max-width:62ch}
+.fx-entrar{display:block;margin-top:14px;font-size:13.5px;font-weight:600;color:var(--brand-soft);
+  opacity:.75;transition:.18s}
+.course-card:hover .fx-entrar{opacity:1;transform:translateX(3px)}
+
+/* --- Módulo destacado --- */
+.fx-destacado{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;
+  background:linear-gradient(135deg,rgba(var(--glow),.16),rgba(var(--glow-2),.07));
+  border:1px solid rgba(var(--glow-soft),.32);border-radius:24px;padding:30px;
+  box-shadow:0 20px 60px rgba(var(--glow),.16)}
+.fx-destacado h3{margin:12px 0 10px;font-size:30px;letter-spacing:-1px}
+.fx-destacado>div>p{margin:0 0 20px;color:#cddcf5;line-height:1.65;font-size:15.5px;max-width:56ch}
+.fx-modos{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:11px}
+.fx-modos li{display:flex;gap:12px;align-items:baseline;font-size:14.5px;line-height:1.5}
+.fx-modos b{flex:none;width:118px;font-weight:650}
+.fx-modos span{color:var(--muted)}
+
+/* Vista en miniatura de una pregunta real */
+.fx-mini{background:rgba(5,10,24,.72);border:1px solid var(--border);border-radius:18px;padding:18px;
+  box-shadow:var(--shadow)}
+.fx-mini-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);
+  margin-bottom:12px;font-variant-numeric:tabular-nums}
+.fx-t{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:var(--brand-2);
+  border:2px solid var(--brand-2);box-shadow:0 0 10px rgba(var(--glow-2),.45);font-size:13px}
+.fx-q{margin:0 0 14px;font-size:16px;font-weight:650;line-height:1.35}
+.fx-op{border-radius:11px;padding:10px 13px;font-size:13.5px;font-weight:600;color:#fff;margin-bottom:8px}
+.fx-op.a0{background:linear-gradient(135deg,#e11d48,#be123c)}
+.fx-op.a1{background:linear-gradient(135deg,#2563eb,#1d4ed8)}
+.fx-op.a2{background:linear-gradient(135deg,#d97706,#b45309)}
+.fx-op.a3{background:linear-gradient(135deg,#16a34a,#15803d)}
+.fx-op.ok{outline:2px solid #86efac;outline-offset:2px}
+.fx-mini-pie{margin-top:12px;font-size:12px;color:var(--muted);text-align:center}
+
+/* --- Metodología --- */
+.fx-metodo{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.fx-paso{border-left:2px solid rgba(var(--glow-soft),.45);padding:4px 0 4px 18px}
+.fx-num{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:9px;font-size:13px;font-weight:700;
+  background:rgba(var(--glow),.22);border:1px solid rgba(var(--glow-soft),.4);color:#dbe8ff;margin-bottom:10px}
+.fx-paso h4{margin:0 0 7px;font-size:16.5px;letter-spacing:-.3px}
+.fx-paso p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+
+/* --- Cierre --- */
+.fx-cierre{text-align:center;margin:56px 0 10px;padding:38px 24px;border-radius:24px;
+  background:radial-gradient(600px 220px at 50% 0%,rgba(var(--glow),.18),transparent 70%);
+  border:1px solid var(--border-soft)}
+.fx-cierre h3{margin:0 0 8px;font-size:27px;letter-spacing:-.8px}
+.fx-cierre p{margin:0 0 22px}
+
+@media (max-width:860px){
+  .fx-destacado{grid-template-columns:1fr;padding:24px}
+  .fx-destacado-vis{order:-1}
+}
+@media (max-width:520px){
+  .fx-modos li{flex-direction:column;gap:2px}
+  .fx-modos b{width:auto}
 }

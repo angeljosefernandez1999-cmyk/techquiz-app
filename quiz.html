@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Entrenamiento Técnico · TecnoSoluciones</title>
+<meta name="description" content="Formación y evaluación técnica en informática, hardware, redes y ciberseguridad.">
+<meta name="theme-color" content="#050a18">
+<meta name="tq-pagina" content="Entrenamiento Técnico">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/brand.js"></script>
+</head>
+<body>
+
+<div class="aurora"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i></div>
+<div class="grid-lines"></div>
+
+<div class="app">
+
+  <!-- ===================== BARRA SUPERIOR ===================== -->
+  <header class="topbar">
+    <div class="wrap topbar-in" style="position:relative">
+      <a class="brand" href="index.html" title="Volver a Formación">
+        <span class="brand-logo"></span>
+        <span>
+          <span class="brand-name">TecnoSoluciones</span>
+          <span class="brand-sub">Aprendizaje Técnico</span>
+        </span>
+      </a>
+
+      <nav class="top-actions">
+        <button class="btn btn-sm" data-go="home" title="Inicio del entrenamiento">🏠<span class="lbl">Inicio</span></button>
+        <button class="btn btn-sm" data-go="editor" title="Mis cursos">🗂️<span class="lbl">Mis cursos</span></button>
+        <button class="btn btn-sm" data-go="historial" title="Tu progreso">📊<span class="lbl">Progreso</span></button>
+        <button class="btn btn-sm" id="btnAudio" title="Sonido y música">
+          <span id="eqIcon">🔊</span><span class="eq" id="eq"><i></i><i></i><i></i><i></i></span>
+        </button>
+      </nav>
+
+      <!-- Panel de sonido -->
+      <div class="audio-panel" id="audioPanel">
+        <h4>🎵 Sonido</h4>
+        <div class="switch">Música de fondo <span class="sw" id="swMusic"></span></div>
+        <div class="audio-row">
+          <label>Volumen música <b id="lblMusic">55%</b></label>
+          <input type="range" id="volMusic" min="0" max="100" value="55">
+        </div>
+        <div class="switch">Efectos de sonido <span class="sw" id="swSfx"></span></div>
+        <div class="audio-row">
+          <label>Volumen efectos <b id="lblSfx">70%</b></label>
+          <input type="range" id="volSfx" min="0" max="100" value="70">
+        </div>
+        <p class="muted" style="font-size:11.5px;margin:6px 0 0;line-height:1.5">
+          La música se genera en tiempo real en tu navegador: no se descarga ningún archivo.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========================= INICIO ========================= -->
+    <section class="screen active" id="scr-home">
+      <div class="wrap">
+
+        <div class="hero">
+          <div class="hero-badge"><span class="dot"></span> <span id="badgeStats">Banco de preguntas cargado</span></div>
+          <h1 id="heroTitulo">Forma técnicos que <span class="grad">dominan el oficio</span></h1>
+          <p id="heroTexto">Evaluación real de hardware, redes, sistemas y ciberseguridad. Cada acierto suma <b>1 punto</b>: responder rápido no da ventaja, solo saber.</p>
+          <div class="hero-cta">
+            <button class="btn btn-primary btn-lg" id="btnJugar">▶ Empezar evaluación</button>
+            <button class="btn btn-lg" data-go="editor" id="btnCrearCurso">✍️ Crear un curso</button>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat"><b id="stCursos">0</b><span>Cursos</span></div>
+          <div class="stat"><b id="stPreguntas">0</b><span>Preguntas</span></div>
+          <div class="stat"><b id="stCategorias">0</b><span>Categorías</span></div>
+          <div class="stat"><b id="stMedia">—</b><span>Tu media</span></div>
+        </div>
+
+        <div class="section-title"><h2>Elige un curso</h2><span class="line"></span>
+          <button class="btn btn-sm" id="btnTodos">🎲 Mezclar todos</button>
+        </div>
+        <div class="courses" id="courseGrid"></div>
+
+        <div class="section-title"><h2>Cómo funciona</h2><span class="line"></span></div>
+        <div class="courses">
+          <div class="card">
+            <span class="course-emoji">🎯</span>
+            <h3 style="margin:0 0 6px">Puntuación justa</h3>
+            <p class="muted mb-0" style="font-size:14px;line-height:1.6">Acierto = 1 punto. Fallo o tiempo agotado = 0. La velocidad nunca cambia la puntuación: dos personas con 8 de 10 empatan siempre.</p>
+          </div>
+          <div class="card">
+            <span class="course-emoji">📚</span>
+            <h3 style="margin:0 0 6px">Enseña, no solo puntúa</h3>
+            <p class="muted mb-0" style="font-size:14px;line-height:1.6">Cada pregunta lleva explicación. Al terminar verás tu porcentaje por categoría y qué temas deberías repasar.</p>
+          </div>
+          <div class="card">
+            <span class="course-emoji">➕</span>
+            <h3 style="margin:0 0 6px">Cursos ilimitados</h3>
+            <p class="muted mb-0" style="font-size:14px;line-height:1.6">Crea cursos enteros desde el panel, impórtalos en JSON o añádelos como fichero al proyecto. Sin límite de preguntas.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================== CONFIGURACIÓN ====================== -->
+    <section class="screen" id="scr-setup">
+      <div class="wrap">
+        <div class="row spread mb-16">
+          <div>
+            <h2 style="margin:0;letter-spacing:-.8px" id="setupTitle">Configura tu partida</h2>
+            <p class="muted" style="margin:6px 0 0" id="setupSub">Elige temas, dificultad y modo de juego.</p>
+          </div>
+          <button class="btn btn-sm" data-go="home">← Volver</button>
+        </div>
+
+        <div class="setup-grid">
+          <div class="card card-pad-lg">
+
+            <div class="field">
+              <label>Cursos incluidos</label>
+              <div class="pills" id="pillCursos"></div>
+            </div>
+
+            <div class="field">
+              <label>Categorías <span class="muted" style="text-transform:none;letter-spacing:0">(ninguna seleccionada = todas)</span></label>
+              <div class="pills" id="pillCats"></div>
+            </div>
+
+            <div class="field">
+              <label>Dificultad</label>
+              <div class="pills" id="pillDifs"></div>
+            </div>
+
+            <div class="field">
+              <label>Número de preguntas</label>
+              <div class="range-row">
+                <input type="range" id="rngNum" min="5" max="100" step="5" value="20">
+                <span class="range-val" id="lblNum">20</span>
+              </div>
+            </div>
+
+            <div class="field mb-0">
+              <label>Tiempo por pregunta</label>
+              <div class="range-row">
+                <input type="range" id="rngTime" min="0" max="120" step="5" value="20">
+                <span class="range-val" id="lblTime">20 s</span>
+              </div>
+              <p class="muted" style="font-size:12.5px;margin:8px 0 0">0 segundos = sin límite de tiempo. El tiempo solo evita que se busquen las respuestas; no da puntos extra.</p>
+            </div>
+
+          </div>
+
+          <div>
+            <div class="card mb-16">
+              <label style="display:block;font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:10px">Modo de juego</label>
+              <div class="mode-list" id="modeList">
+                <label class="mode on">
+                  <input type="radio" name="modo" value="practica" checked>
+                  <span class="ico">📖</span>
+                  <span><b>Práctica</b><small>Te dice si aciertas y explica cada pregunta al instante. Ideal para estudiar.</small></span>
+                </label>
+                <label class="mode">
+                  <input type="radio" name="modo" value="juego">
+                  <span class="ico">🎮</span>
+                  <span><b>Juego</b><small>Ritmo rápido con música, racha y marcador. Feedback breve entre preguntas.</small></span>
+                </label>
+                <label class="mode">
+                  <input type="radio" name="modo" value="examen">
+                  <span class="ico">📝</span>
+                  <span><b>Examen</b><small>Sin correcciones durante la prueba. Resultado, porcentaje y fallos al terminar.</small></span>
+                </label>
+              </div>
+
+              <div class="field mt-16 mb-0 hidden" id="fieldAprobado">
+                <label>Nota mínima para aprobar</label>
+                <div class="range-row">
+                  <input type="range" id="rngPass" min="30" max="100" step="5" value="70">
+                  <span class="range-val" id="lblPass">70%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <label style="display:block;font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:12px">Resumen</label>
+              <div class="summary-line"><span>Preguntas disponibles</span><b id="sumPool">0</b></div>
+              <div class="summary-line"><span>Preguntas de la prueba</span><b id="sumNum">20</b></div>
+              <div class="summary-line"><span>Puntuación máxima</span><b id="sumMax">20 pts</b></div>
+              <div class="summary-line"><span>Duración estimada</span><b id="sumDur">~7 min</b></div>
+              <button class="btn btn-primary btn-lg mt-16" id="btnStart" style="width:100%">▶ Comenzar</button>
+              <p class="muted center" style="font-size:12px;margin:10px 0 0">1 acierto = 1 punto · la rapidez no puntúa</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= PARTIDA ========================= -->
+    <section class="screen" id="scr-play">
+      <div class="wrap">
+        <div class="play-head">
+          <button class="btn btn-sm btn-ghost" id="btnAbandonar">✕ Salir</button>
+          <span class="qcount">Pregunta <b id="qNow">1</b> / <span id="qTotal">20</span></span>
+          <div class="play-score">
+            <span class="score-pill streak hidden" id="pillStreak">🔥 <span id="streakN">0</span></span>
+            <span class="score-pill"><small>Puntos</small><span id="scoreN">0</span></span>
+          </div>
+        </div>
+
+        <div class="progress"><i id="progBar" style="width:0%"></i></div>
+
+        <div class="q-area" id="qArea">
+          <div class="timer" id="timer">
+            <svg viewBox="0 0 120 120">
+              <circle class="bgc" cx="60" cy="60" r="52"></circle>
+              <circle class="fgc" id="timerArc" cx="60" cy="60" r="52"
+                      stroke-dasharray="326.7" stroke-dashoffset="0"></circle>
+            </svg>
+            <div class="num" id="timerNum">20</div>
+          </div>
+          <div>
+            <div class="q-cat">
+              <span class="chip" id="qCat">Redes</span>
+              <span class="chip" id="qDif">Básico</span>
+              <span class="chip" id="qCurso">Curso</span>
+            </div>
+            <h2 class="q-text" id="qText">Cargando…</h2>
+          </div>
+        </div>
+
+        <div class="answers" id="answers"></div>
+
+        <div class="feedback" id="feedback">
+          <h4 id="fbTitle">✅ Correcto</h4>
+          <p id="fbText"></p>
+          <div class="next-row">
+            <button class="btn btn-primary" id="btnNext">Siguiente →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== RESULTADOS ======================== -->
+    <section class="screen" id="scr-result">
+      <div class="wrap">
+        <div class="card card-pad-lg">
+          <div class="result-top">
+            <p class="muted" style="margin:0 0 4px;letter-spacing:.14em;text-transform:uppercase;font-size:12px">Resultado</p>
+            <h2 style="margin:0 0 20px;font-size:28px;letter-spacing:-.8px" id="resTitle">Fundamentos de Redes</h2>
+            <div class="result-ring">
+              <svg viewBox="0 0 200 200">
+                <defs>
+                  <linearGradient id="gradring" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#7c5cff"></stop>
+                    <stop offset="100%" stop-color="#22d3ee"></stop>
+                  </linearGradient>
+                </defs>
+                <circle class="bgc" cx="100" cy="100" r="86"></circle>
+                <circle class="fgc" id="resArc" cx="100" cy="100" r="86"
+                        stroke-dasharray="540.4" stroke-dashoffset="540.4"></circle>
+              </svg>
+              <div class="mid">
+                <div class="pct" id="resPct">0%</div>
+                <div class="frac" id="resFrac">0 / 0 correctas</div>
+              </div>
+            </div>
+            <div id="resVerdict"></div>
+          </div>
+
+          <div class="section-title" style="margin-top:10px"><h2 style="font-size:19px">Por categoría</h2><span class="line"></span></div>
+          <div class="bars" id="resBars"></div>
+
+          <div id="resAdvice" class="mt-24"></div>
+
+          <div class="section-title"><h2 style="font-size:19px">Repaso de preguntas</h2><span class="line"></span>
+            <button class="btn btn-sm" id="btnToggleRev">Ver falladas</button>
+          </div>
+          <div class="review" id="resReview"></div>
+
+          <div class="results-actions">
+            <button class="btn btn-primary btn-lg" id="btnRepetir">🔁 Repetir</button>
+            <button class="btn btn-lg" id="btnFallos">🎯 Repasar solo fallos</button>
+            <button class="btn btn-lg" data-go="home">🏠 Inicio</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================== EDITOR ========================== -->
+    <section class="screen" id="scr-editor">
+      <div class="wrap">
+        <div class="row spread mb-16">
+          <div>
+            <h2 style="margin:0;letter-spacing:-.8px">🗂️ Mis cursos</h2>
+            <p class="muted" style="margin:6px 0 0">Crea cursos completos, añade todas las preguntas que quieras, impórtalos y expórtalos.</p>
+          </div>
+          <button class="btn btn-sm" data-go="home">← Volver</button>
+        </div>
+
+        <div class="ed-toolbar">
+          <button class="btn btn-primary btn-sm" id="edNuevoCurso">➕ Nuevo curso</button>
+          <button class="btn btn-sm" id="edImportar">📥 Importar JSON</button>
+          <button class="btn btn-sm" id="edExportar">📤 Exportar curso</button>
+          <button class="btn btn-sm" id="edDuplicar">📋 Duplicar curso</button>
+          <button class="btn btn-sm btn-danger" id="edBorrarCurso">🗑️ Borrar curso</button>
+        </div>
+
+        <div class="card mb-16">
+          <div class="two-col">
+            <div>
+              <label style="display:block;font-size:13px;color:var(--muted);margin-bottom:8px">Curso seleccionado</label>
+              <select id="edCursoSel"></select>
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;color:var(--muted);margin-bottom:8px">Acciones rápidas</label>
+              <div class="row">
+                <button class="btn btn-sm" id="edJugarCurso">▶ Jugar este curso</button>
+                <button class="btn btn-sm" id="edGuardarCurso">💾 Guardar cambios</button>
+              </div>
+            </div>
+          </div>
+          <div class="two-col mt-16" id="edMetaBox">
+            <div>
+              <label style="display:block;font-size:13px;color:var(--muted);margin-bottom:8px">Nombre del curso</label>
+              <input type="text" id="edNombre" placeholder="Fundamentos de Redes">
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;color:var(--muted);margin-bottom:8px">Emoji e descripción</label>
+              <div class="row" style="flex-wrap:nowrap">
+                <input type="text" id="edEmoji" maxlength="4" style="width:70px;text-align:center;font-size:20px" placeholder="📘">
+                <input type="text" id="edDesc" placeholder="Breve descripción del curso">
+              </div>
+            </div>
+          </div>
+          <p class="muted" style="font-size:12.5px;margin:12px 0 0" id="edAviso"></p>
+        </div>
+
+        <div class="editor-grid">
+          <div class="card">
+            <div class="row spread mb-16">
+              <b style="font-size:15px">Preguntas (<span id="edCount">0</span>)</b>
+              <button class="btn btn-sm btn-primary" id="edNuevaPregunta">➕</button>
+            </div>
+            <input type="text" id="edBuscar" placeholder="🔎 Buscar…" class="mb-16">
+            <div class="ed-list" id="edList"></div>
+          </div>
+
+          <div class="card card-pad-lg" id="edForm">
+            <div class="field">
+              <label>Enunciado</label>
+              <textarea id="fqTexto" placeholder="¿Qué protocolo asigna automáticamente direcciones IP?"></textarea>
+            </div>
+
+            <div class="field">
+              <label>Respuestas — marca la correcta</label>
+              <div id="fqOpciones"></div>
+              <div class="row mt-8">
+                <button class="btn btn-sm" id="fqAddOpt">➕ Añadir opción</button>
+                <button class="btn btn-sm" id="fqDelOpt">➖ Quitar última</button>
+              </div>
+            </div>
+
+            <div class="two-col">
+              <div class="field">
+                <label>Categoría</label>
+                <input type="text" id="fqCat" list="catList" placeholder="Redes">
+                <datalist id="catList"></datalist>
+              </div>
+              <div class="field">
+                <label>Dificultad</label>
+                <select id="fqDif">
+                  <option value="basico">Básico</option>
+                  <option value="medio">Medio</option>
+                  <option value="avanzado">Avanzado</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Explicación (se muestra tras responder)</label>
+              <textarea id="fqExp" placeholder="DHCP entrega IP, máscara, puerta de enlace y DNS automáticamente."></textarea>
+            </div>
+
+            <div class="row spread">
+              <button class="btn btn-danger btn-sm" id="fqBorrar">🗑️ Borrar pregunta</button>
+              <div class="row">
+                <button class="btn btn-sm" id="fqNueva">Limpiar</button>
+                <button class="btn btn-primary" id="fqGuardar">💾 Guardar pregunta</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Zona de importación -->
+        <div class="card mt-16 hidden" id="edImportBox">
+          <div class="row spread mb-16">
+            <b>📥 Importar curso desde JSON</b>
+            <button class="btn btn-sm" id="edImportCerrar">✕</button>
+          </div>
+          <p class="muted" style="font-size:13.5px;margin:0 0 12px;line-height:1.6">
+            Pega el JSON de un curso (o un array de cursos) y pulsa importar. También puedes seleccionar un archivo .json.
+            Formato de cada pregunta: <span class="kbd">{"q":"…","o":["A","B","C","D"],"r":1,"d":"basico","c":"Redes","e":"…"}</span>
+          </p>
+          <input type="file" id="edFile" accept=".json,application/json" class="mb-16">
+          <textarea id="edJson" rows="9" placeholder='{"nombre":"Mi curso","emoji":"📘","preguntas":[{"q":"…","o":["A","B","C","D"],"r":0,"d":"basico","c":"Tema","e":"…"}]}'></textarea>
+          <div class="row mt-16">
+            <button class="btn btn-primary" id="edImportOk">Importar</button>
+            <button class="btn" id="edPlantilla">Ver plantilla de ejemplo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= HISTORIAL ========================= -->
+    <section class="screen" id="scr-historial">
+      <div class="wrap">
+        <div class="row spread mb-16">
+          <div>
+            <h2 style="margin:0;letter-spacing:-.8px">📊 Tu progreso</h2>
+            <p class="muted" style="margin:6px 0 0">Resultados guardados en este navegador.</p>
+          </div>
+          <button class="btn btn-sm" data-go="home">← Volver</button>
+        </div>
+
+        <div class="stats-row" style="margin-top:0">
+          <div class="stat"><b id="hPartidas">0</b><span>Partidas</span></div>
+          <div class="stat"><b id="hMedia">0%</b><span>Media global</span></div>
+          <div class="stat"><b id="hMejor">0%</b><span>Mejor resultado</span></div>
+          <div class="stat"><b id="hTotal">0</b><span>Preguntas respondidas</span></div>
+        </div>
+
+        <div class="card mt-24">
+          <div class="row spread mb-16">
+            <b style="font-size:15px">Últimas partidas</b>
+            <button class="btn btn-sm btn-danger" id="hBorrar">🗑️ Borrar historial</button>
+          </div>
+          <div id="hTabla"></div>
+        </div>
+
+        <div class="card mt-16">
+          <b style="font-size:15px;display:block;margin-bottom:14px">Dominio por categoría</b>
+          <div class="bars" id="hBars"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap row spread">
+      <span id="pieMarca">TecnoSoluciones · Aprendizaje técnico · 1 acierto = 1 punto</span>
+      <span>Usa <span class="kbd">1</span>–<span class="kbd">4</span> para responder y <span class="kbd">Enter</span> para continuar</span>
+    </div>
+  </footer>
+</div>
+
+<div class="toasts" id="toasts"></div>
+<div class="confetti" id="confetti"></div>
+
+<script src="assets/js/audio.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="data/cursos/01-fundamentos-hardware.js"></script>
+<script src="data/cursos/02-redes.js"></script>
+<script src="data/cursos/03-sistemas.js"></script>
+<script src="data/cursos/04-ciberseguridad.js"></script>
+<script src="data/cursos/05-reparacion.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

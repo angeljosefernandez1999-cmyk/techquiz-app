@@ -3,6 +3,13 @@
 Plataforma de aprendizaje y evaluación técnica en hardware, redes, sistemas y ciberseguridad,
 con estética gaming y rigor de examen: **estudiar y evaluar**, sin premiar la rapidez.
 
+El sitio tiene dos páginas:
+
+| Página | Archivo | Qué es |
+|---|---|---|
+| **Formación** | `index.html` | Portada del área: propuesta, áreas de temario y metodología |
+| **Entrenamiento Técnico** | `quiz.html` | El módulo de preguntas: práctica, juego y examen |
+
 Se distribuye con dos marcas sobre el mismo código: **TecnoSoluciones** (por defecto) y
 **TechQuiz**. Ver [Marca e identidad visual](#-marca-e-identidad-visual).
 
@@ -83,6 +90,24 @@ Los tokens de color (`--bg`, `--brand`, `--brand-2`, `--glow`, `--aurora-*`, `--
 están declarados en `:root` dentro de `assets/css/style.css`; la marca solo los redefine.
 El resplandor neón (temporizador, barra de progreso, anillo de resultados, logotipo) se calcula
 a partir de `--glow` y `--glow-2`, así que adopta automáticamente el color de cada marca.
+
+---
+
+## 🔗 Enlaces entre páginas
+
+La portada de Formación enlaza el módulo con parámetros, para que el alumno entre directo
+donde toca:
+
+| Enlace | Efecto |
+|---|---|
+| `quiz.html` | Inicio del entrenamiento |
+| `quiz.html?curso=redes-cisco` | Abre la configuración con esa área ya seleccionada |
+| `quiz.html?ir=editor` | Abre directamente el editor de cursos |
+| `quiz.html?marca=techquiz` | Cambia de marca |
+
+Las cifras de la portada (preguntas, áreas, categorías) y las tarjetas de área se generan
+leyendo el propio banco de preguntas, así que **nunca se quedan desfasadas**: al añadir un
+curso aparece solo.
 
 ---
 
@@ -198,11 +223,13 @@ Al ser estática no necesita configuración, variables de entorno ni base de dat
 
 ```
 techquiz-app/
-├── index.html                 Pantallas de la aplicación
+├── index.html                 Portada del área de Formación
+├── quiz.html                  Módulo de Entrenamiento Técnico
 ├── assets/
 │   ├── css/style.css          Estilos, animaciones y diseño responsive
 │   └── js/
 │       ├── brand.js           Marcas: nombre, logotipo, paleta y textos
+│       ├── formacion.js       Portada: cifras y tarjetas de área
 │       ├── audio.js           Motor de música y efectos (Web Audio API)
 │       ├── data.js            Cursos, almacenamiento, import/export e historial
 │       └── app.js             Pantallas, motor de juego, resultados y editor

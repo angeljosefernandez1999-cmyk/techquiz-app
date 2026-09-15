@@ -956,6 +956,15 @@
     });
 
     renderHome();
+
+    // La portada de Formación puede enlazar un área concreta: quiz.html?curso=redes-cisco
+    try {
+      var params = new URLSearchParams(location.search);
+      var pedido = params.get('curso');
+      var pantalla = params.get('ir');
+      if (pedido && D.curso_(pedido)) abrirSetup([pedido]);
+      else if (pantalla && document.getElementById('scr-' + pantalla)) ir(pantalla);
+    } catch (e) { /* navegador sin URLSearchParams */ }
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

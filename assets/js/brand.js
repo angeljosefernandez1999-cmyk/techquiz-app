@@ -136,7 +136,9 @@
     var $ = function (s) { return document.querySelector(s); };
     var poner = function (sel, html) { var e = $(sel); if (e) e.innerHTML = html; };
 
-    document.title = marca.titulo;
+    // Cada página puede declarar su sección con <meta name="tq-pagina">
+    var pagina = $('meta[name="tq-pagina"]');
+    document.title = pagina ? pagina.getAttribute('content') + ' · ' + marca.nombre : marca.titulo;
     var meta = $('meta[name="description"]');
     if (meta) meta.setAttribute('content', marca.descripcion);
     var tc = $('meta[name="theme-color"]');
