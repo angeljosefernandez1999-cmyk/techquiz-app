@@ -44,6 +44,7 @@
       ctaCurso: '✍️ Crear un curso',
       heroTexto: 'Evaluación real de hardware, redes, sistemas y ciberseguridad. Cada acierto suma <b>1 punto</b>: responder rápido no da ventaja, solo saber.',
       pie: 'TecnoSoluciones · Aprendizaje técnico · 1 acierto = 1 punto',
+      sitio: { url: 'https://tecnosoluciones.info', etiqueta: 'tecnosoluciones.info' },
       themeColor: '#050a18',
       colores: {
         '--bg': '#050a18',
@@ -85,6 +86,7 @@
       ctaCurso: '✍️ Crear mi curso',
       heroTexto: 'Quiz técnico de hardware, redes, sistemas y ciberseguridad. Cada acierto suma <b>1 punto</b>: responder rápido no da ventaja, solo saber.',
       pie: 'TechQuiz · 1 acierto = 1 punto · la velocidad no puntúa',
+      sitio: null,
       themeColor: '#070b18',
       colores: {
         '--bg': '#070b18',
@@ -134,6 +136,7 @@
   /* Los textos, cuando el DOM esté disponible. */
   function aplicarTextos() {
     var $ = function (s) { return document.querySelector(s); };
+    var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
     var poner = function (sel, html) { var e = $(sel); if (e) e.innerHTML = html; };
 
     // Cada página puede declarar su sección con <meta name="tq-pagina">
@@ -152,6 +155,18 @@
     poner('#heroTitulo', marca.heroTitulo);
     poner('#heroTexto', marca.heroTexto);
     poner('#pieMarca', marca.pie);
+
+    // Enlace de vuelta al sitio principal (si la marca tiene uno)
+    $$('.volver-sitio').forEach(function (a) {
+      if (marca.sitio) {
+        a.href = marca.sitio.url;
+        var etiqueta = a.querySelector('.lbl');
+        if (etiqueta) etiqueta.textContent = marca.sitio.etiqueta;
+        a.hidden = false;
+      } else {
+        a.hidden = true;
+      }
+    });
     poner('#btnJugar', marca.ctaJugar);
     poner('#btnCrearCurso', marca.ctaCurso);
 

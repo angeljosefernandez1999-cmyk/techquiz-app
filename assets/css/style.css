@@ -401,6 +401,8 @@ footer{border-top:1px solid var(--border-soft);padding:22px 0;color:var(--muted)
 /* ==========================================================================
    Portada del área de Formación
    ========================================================================== */
+footer a,.volver-sitio{color:inherit;text-decoration:none}
+footer a:hover,.volver-sitio:hover{color:var(--brand-soft)}
 .nav-actual{padding:8px 14px;background:rgba(var(--glow),.16);border-color:rgba(var(--glow-soft),.4);color:#dce8ff}
 a.btn{text-decoration:none}
 a.course-card{text-decoration:none;display:block}
