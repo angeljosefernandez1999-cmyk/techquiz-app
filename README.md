@@ -1,7 +1,10 @@
-# 🧠 TechQuiz — Fundamentos de Informática y Redes
+# 🔷 Tecnosoluciones Formación
 
-Quiz técnico de hardware, redes, sistemas y ciberseguridad, pensado para **estudiar y evaluar**,
-no para premiar la rapidez.
+Plataforma de formación y evaluación técnica en hardware, redes, sistemas y ciberseguridad,
+pensada para **estudiar y evaluar**, no para premiar la rapidez.
+
+Se distribuye con dos marcas sobre el mismo código: **Tecnosoluciones** (por defecto) y
+**TechQuiz**. Ver [Marca e identidad visual](#-marca-e-identidad-visual).
 
 > **Puntuación:** acierto = **1 punto** · fallo = 0 · tiempo agotado = 0.
 > La velocidad **nunca** modifica la puntuación: dos personas con 8 de 10 empatan siempre a 8 puntos.
@@ -25,6 +28,7 @@ servidor. Se abre con doble clic o se publica en cualquier hosting.
 | 📈 **Progreso** | Historial de partidas y dominio acumulado por categoría (guardado en el navegador) |
 | ⌨️ **Atajos** | Teclas `1`–`4` para responder y `Enter` para continuar |
 | 📱 **Responsive** | Funciona en móvil, tablet y escritorio |
+| 🎨 **Marca configurable** | Nombre, logotipo, paleta y textos en un único fichero, sin duplicar código |
 
 ### Cursos incorporados
 
@@ -35,6 +39,48 @@ servidor. Se abre con doble clic o se publica en cualquier hosting.
 | 💻 Sistemas Operativos | 37 | Windows, Linux, BIOS/UEFI |
 | 🔐 Ciberseguridad | 30 | Malware, Ingeniería social, Contraseñas y acceso, Red y cifrado, Copias y buenas prácticas |
 | 🛠️ Reparación y Mantenimiento | 27 | Diagnóstico, Montaje, Portátiles y móviles, Impresoras y periféricos, Soporte al usuario |
+
+---
+
+## 🎨 Marca e identidad visual
+
+Toda la identidad vive en `assets/js/brand.js`: nombre, subtítulo, logotipo, favicon, titular,
+textos de los botones, pie y paleta completa. El banco de preguntas y la lógica del juego son
+comunes a todas las marcas, así que **cambiar de marca no toca ni una pregunta**.
+
+| Marca | Paleta | Cómo abrirla |
+|---|---|---|
+| **Tecnosoluciones** (por defecto) | Azul corporativo `#071a2f` + cian `#00a8e8` | `index.html` |
+| **TechQuiz** | Azul noche `#070b18` + violeta `#7c5cff` | `index.html?marca=techquiz` |
+
+La última marca abierta por URL queda recordada en el navegador. Para cambiar la marca por
+defecto, edita la constante `MARCA_PREDETERMINADA` al principio de `assets/js/brand.js`.
+
+### Crear una marca nueva
+
+Añade una entrada al objeto `MARCAS` de `assets/js/brand.js` y quedará disponible como
+`index.html?marca=tu-marca`:
+
+```js
+mimarca: {
+  titulo: 'Mi Academia',
+  descripcion: 'Formación técnica',
+  nombre: 'Mi Academia',
+  sub: 'Cursos IT',
+  logo: '🎓',                                   // emoji o SVG en línea
+  favicon: '<svg xmlns="..." viewBox="0 0 32 32">…</svg>',
+  heroTitulo: 'Aprende <span class="grad">de verdad</span>',
+  heroTexto: 'Descripción bajo el titular.',
+  ctaJugar: '▶ Empezar', ctaCurso: '✍️ Crear un curso',
+  pie: 'Mi Academia · 1 acierto = 1 punto',
+  themeColor: '#0b1020',
+  colores: { '--bg': '#0b1020', '--brand': '#e2574c', /* …resto de tokens… */ },
+  anillo: ['#e2574c', '#ffb347']                 // degradado del anillo de resultados
+}
+```
+
+Los tokens de color (`--bg`, `--brand`, `--brand-2`, `--glow`, `--aurora-*`, `--blob-*`…)
+están declarados en `:root` dentro de `assets/css/style.css`; la marca solo los redefine.
 
 ---
 
@@ -154,6 +200,7 @@ techquiz-app/
 ├── assets/
 │   ├── css/style.css          Estilos, animaciones y diseño responsive
 │   └── js/
+│       ├── brand.js           Marcas: nombre, logotipo, paleta y textos
 │       ├── audio.js           Motor de música y efectos (Web Audio API)
 │       ├── data.js            Cursos, almacenamiento, import/export e historial
 │       └── app.js             Pantallas, motor de juego, resultados y editor

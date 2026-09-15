@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>TechQuiz — Fundamentos de Informática y Redes</title>
-<meta name="description" content="Quiz técnico de informática, hardware, redes y ciberseguridad. Practica, examínate y crea tus propios cursos de preguntas.">
-<meta name="theme-color" content="#070b18">
+<title>Tecnosoluciones Formación</title>
+<meta name="description" content="Formación y evaluación técnica en informática, hardware, redes y ciberseguridad.">
+<meta name="theme-color" content="#071a2f">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/brand.js"></script>
 </head>
 <body>
 
@@ -23,10 +24,10 @@
   <header class="topbar">
     <div class="wrap topbar-in" style="position:relative">
       <button class="brand" data-go="home">
-        <span class="brand-logo">🧠</span>
+        <span class="brand-logo"></span>
         <span>
-          <span class="brand-name">TechQuiz</span>
-          <span class="brand-sub">Informática y Redes</span>
+          <span class="brand-name">Tecnosoluciones</span>
+          <span class="brand-sub">Formación Técnica</span>
         </span>
       </button>
 
@@ -66,11 +67,11 @@
 
         <div class="hero">
           <div class="hero-badge"><span class="dot"></span> <span id="badgeStats">Banco de preguntas cargado</span></div>
-          <h1>Domina la <span class="grad">informática</span><br>pregunta a pregunta</h1>
-          <p>Quiz técnico de hardware, redes, sistemas y ciberseguridad. Cada acierto suma <b>1 punto</b>: responder rápido no da ventaja, solo saber.</p>
+          <h1 id="heroTitulo">Forma técnicos que <span class="grad">dominan el oficio</span></h1>
+          <p id="heroTexto">Evaluación real de hardware, redes, sistemas y ciberseguridad. Cada acierto suma <b>1 punto</b>: responder rápido no da ventaja, solo saber.</p>
           <div class="hero-cta">
-            <button class="btn btn-primary btn-lg" id="btnJugar">🎮 Empezar a jugar</button>
-            <button class="btn btn-lg" data-go="editor">✍️ Crear mi curso</button>
+            <button class="btn btn-primary btn-lg" id="btnJugar">▶ Empezar evaluación</button>
+            <button class="btn btn-lg" data-go="editor" id="btnCrearCurso">✍️ Crear un curso</button>
           </div>
         </div>
 
@@ -453,7 +454,7 @@
 
   <footer>
     <div class="wrap row spread">
-      <span>TechQuiz · 1 acierto = 1 punto · la velocidad no puntúa</span>
+      <span id="pieMarca">Tecnosoluciones · Formación técnica · 1 acierto = 1 punto</span>
       <span>Usa <span class="kbd">1</span>–<span class="kbd">4</span> para responder y <span class="kbd">Enter</span> para continuar</span>
     </div>
   </footer>
