@@ -13,7 +13,7 @@
 
   var MARCA_PREDETERMINADA = 'tecnosoluciones';
 
-  /* Logotipo de Tecnosoluciones: un chip, por el oficio que enseña. */
+  /* Logotipo de TecnoSoluciones: un chip, por el oficio que enseña. */
   var LOGO_CHIP =
     '<svg viewBox="0 0 32 32" width="21" height="21" fill="none" aria-hidden="true">' +
       '<rect x="9.5" y="9.5" width="13" height="13" rx="3" stroke="#fff" stroke-width="2"/>' +
@@ -26,48 +26,49 @@
 
   var MARCAS = {
 
-    /* ------------------------------------------------- Tecnosoluciones */
+    /* ------------------------------------------------- TecnoSoluciones */
     tecnosoluciones: {
-      titulo: 'Tecnosoluciones Formación',
+      titulo: 'TecnoSoluciones Formación',
       descripcion: 'Formación y evaluación técnica en informática, hardware, redes y ciberseguridad.',
-      nombre: 'Tecnosoluciones',
-      sub: 'Formación Técnica',
+      nombre: 'TecnoSoluciones',
+      sub: 'Aprendizaje Técnico',
       logo: LOGO_CHIP,
       favicon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">' +
-               '<rect width="32" height="32" rx="7" fill="#0a2540"/>' +
-               '<rect x="9.5" y="9.5" width="13" height="13" rx="3" stroke="#00a8e8" stroke-width="2" fill="none"/>' +
-               '<rect x="14" y="14" width="4" height="4" rx="1" fill="#00a8e8"/>' +
-               '<g stroke="#00a8e8" stroke-width="2" stroke-linecap="round">' +
+               '<rect width="32" height="32" rx="7" fill="#081231"/>' +
+               '<rect x="9.5" y="9.5" width="13" height="13" rx="3" stroke="#1e6bff" stroke-width="2" fill="none"/>' +
+               '<rect x="14" y="14" width="4" height="4" rx="1" fill="#00e5ff"/>' +
+               '<g stroke="#1e6bff" stroke-width="2" stroke-linecap="round">' +
                '<path d="M13 9.5V6M19 9.5V6M13 26v-3.5M19 26v-3.5M9.5 13H6M9.5 19H6M26 13h-3.5M26 19h-3.5"/></g></svg>',
       heroTitulo: 'Forma técnicos que <span class="grad">dominan el oficio</span>',
       ctaJugar: '▶ Empezar evaluación',
       ctaCurso: '✍️ Crear un curso',
       heroTexto: 'Evaluación real de hardware, redes, sistemas y ciberseguridad. Cada acierto suma <b>1 punto</b>: responder rápido no da ventaja, solo saber.',
-      pie: 'Tecnosoluciones · Formación técnica · 1 acierto = 1 punto',
-      themeColor: '#071a2f',
+      pie: 'TecnoSoluciones · Aprendizaje técnico · 1 acierto = 1 punto',
+      themeColor: '#050a18',
       colores: {
-        '--bg': '#071a2f',
-        '--bg-2': '#0a2540',
-        '--text': '#e9f3fc',
-        '--muted': '#8ba7c4',
-        '--brand': '#00a8e8',
-        '--brand-2': '#38bdf8',
-        '--brand-3': '#0077c2',
-        '--brand-hi': '#22bcf7',
-        '--brand-hi-2': '#0d8ed8',
-        '--brand-soft': '#7dd3fc',
-        '--glow': '0,168,232',
-        '--glow-2': '56,189,248',
-        '--glow-soft': '125,211,252',
-        '--grad-title': 'linear-gradient(110deg,#9fe4ff 0%,#00a8e8 50%,#4f9dff 100%)',
-        '--aurora-1': '#0b3a63',
-        '--aurora-2': '#07365c',
-        '--aurora-3': '#052f4d',
-        '--blob-1': '#0077b6',
-        '--blob-2': '#00a8e8',
-        '--blob-3': '#2dd4bf'
+        '--bg': '#050a18',
+        '--bg-2': '#081231',
+        '--text': '#e8f0ff',
+        '--muted': '#8ea4cc',
+        '--brand': '#1e6bff',          /* azul eléctrico */
+        '--brand-2': '#00e5ff',        /* cian neón */
+        '--brand-3': '#0047d6',
+        '--brand-hi': '#4a8bff',
+        '--brand-hi-2': '#18a5ff',
+        '--brand-soft': '#7cb2ff',
+        '--glow': '30,107,255',
+        '--glow-2': '0,229,255',
+        '--glow-soft': '124,178,255',
+        '--grad-title': 'linear-gradient(110deg,#8ec5ff 0%,#1e6bff 42%,#00e5ff 100%)',
+        '--aurora-1': '#0e2a7a',
+        '--aurora-2': '#122060',
+        '--aurora-3': '#05364f',
+        '--blob-1': '#1e6bff',
+        '--blob-2': '#00e5ff',
+        '--blob-3': '#6d28d9',
+        '--grid-op': '.5'              /* rejilla de fondo más marcada */
       },
-      anillo: ['#00a8e8', '#7dd3fc']
+      anillo: ['#1e6bff', '#00e5ff']
     },
 
     /* --------------------------------------------------------- TechQuiz */
@@ -105,7 +106,8 @@
         '--aurora-3': '#08304d',
         '--blob-1': '#6d4bff',
         '--blob-2': '#12b8d8',
-        '--blob-3': '#f0369b'
+        '--blob-3': '#f0369b',
+        '--grid-op': '.32'
       },
       anillo: ['#7c5cff', '#22d3ee']
     }

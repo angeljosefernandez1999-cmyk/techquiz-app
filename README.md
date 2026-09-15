@@ -1,9 +1,9 @@
-# 🔷 Tecnosoluciones Formación
+# ⚡ TecnoSoluciones Formación
 
-Plataforma de formación y evaluación técnica en hardware, redes, sistemas y ciberseguridad,
-pensada para **estudiar y evaluar**, no para premiar la rapidez.
+Plataforma de aprendizaje y evaluación técnica en hardware, redes, sistemas y ciberseguridad,
+con estética gaming y rigor de examen: **estudiar y evaluar**, sin premiar la rapidez.
 
-Se distribuye con dos marcas sobre el mismo código: **Tecnosoluciones** (por defecto) y
+Se distribuye con dos marcas sobre el mismo código: **TecnoSoluciones** (por defecto) y
 **TechQuiz**. Ver [Marca e identidad visual](#-marca-e-identidad-visual).
 
 > **Puntuación:** acierto = **1 punto** · fallo = 0 · tiempo agotado = 0.
@@ -50,7 +50,7 @@ comunes a todas las marcas, así que **cambiar de marca no toca ni una pregunta*
 
 | Marca | Paleta | Cómo abrirla |
 |---|---|---|
-| **Tecnosoluciones** (por defecto) | Azul corporativo `#071a2f` + cian `#00a8e8` | `index.html` |
+| **TecnoSoluciones** (por defecto) | Azul eléctrico `#1e6bff` + cian neón `#00e5ff` sobre `#050a18` | `index.html` |
 | **TechQuiz** | Azul noche `#070b18` + violeta `#7c5cff` | `index.html?marca=techquiz` |
 
 La última marca abierta por URL queda recordada en el navegador. Para cambiar la marca por
@@ -79,8 +79,10 @@ mimarca: {
 }
 ```
 
-Los tokens de color (`--bg`, `--brand`, `--brand-2`, `--glow`, `--aurora-*`, `--blob-*`…)
+Los tokens de color (`--bg`, `--brand`, `--brand-2`, `--glow`, `--aurora-*`, `--blob-*`, `--grid-op`…)
 están declarados en `:root` dentro de `assets/css/style.css`; la marca solo los redefine.
+El resplandor neón (temporizador, barra de progreso, anillo de resultados, logotipo) se calcula
+a partir de `--glow` y `--glow-2`, así que adopta automáticamente el color de cada marca.
 
 ---
 
