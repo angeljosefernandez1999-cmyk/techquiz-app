@@ -30,9 +30,9 @@ servidor. Se abre con doble clic o se publica en cualquier hosting.
 
 | Curso | Preguntas | Temas |
 |---|---|---|
-| 🖥️ Fundamentos y Hardware | 43 | Fundamentos, CPU/RAM/GPU, Almacenamiento, Placa base y PSU, Puertos y conectores |
+| 🖥️ Fundamentos y Hardware | 43 | Fundamentos, CPU / RAM / GPU, Almacenamiento, Placa base y PSU, Puertos y conectores |
 | 🌐 Redes y Cisco | 57 | Redes, Direccionamiento IP, Subnetting, Protocolos y puertos, Cableado, Cisco, Wi-Fi |
-| 💻 Sistemas Operativos | 37 | Windows, Linux, BIOS/UEFI |
+| 💻 Sistemas Operativos | 37 | Windows, Linux, BIOS / UEFI |
 | 🔐 Ciberseguridad | 30 | Malware, Ingeniería social, Contraseñas y acceso, Red y cifrado, Copias y buenas prácticas |
 | 🛠️ Reparación y Mantenimiento | 27 | Diagnóstico, Montaje, Portátiles y móviles, Impresoras y periféricos, Soporte al usuario |
 
@@ -126,6 +126,15 @@ TQ.curso({
 <script src="data/cursos/06-mi-curso.js"></script>
 ```
 
+3. Comprueba que todo está bien:
+
+```bash
+node tools/validar.mjs
+```
+
+Imprime un inventario (cursos, preguntas, categorías, reparto por dificultad) y falla si
+encuentra algún problema.
+
 No hay límite de preguntas ni de cursos: puedes cargar bancos de miles de preguntas.
 
 ---
@@ -164,6 +173,11 @@ techquiz-app/
     ├── 04-ciberseguridad.js
     └── 05-reparacion.js
 ```
+
+Además, `tools/validar.mjs` revisa todo el banco de preguntas (índice de respuesta
+correcta fuera de rango, enunciados duplicados, dificultades inválidas, cursos sin
+registrar en `index.html`) y `.claude/` contiene la configuración y los atajos para
+trabajar el proyecto con Claude Code.
 
 ---
 
