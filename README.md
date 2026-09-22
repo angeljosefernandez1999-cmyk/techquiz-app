@@ -126,6 +126,15 @@ TQ.curso({
 <script src="data/cursos/06-mi-curso.js"></script>
 ```
 
+3. Comprueba que todo está bien:
+
+```bash
+node tools/validar.mjs
+```
+
+Imprime un inventario (cursos, preguntas, categorías, reparto por dificultad) y falla si
+encuentra algún problema.
+
 No hay límite de preguntas ni de cursos: puedes cargar bancos de miles de preguntas.
 
 ---
@@ -164,6 +173,11 @@ techquiz-app/
     ├── 04-ciberseguridad.js
     └── 05-reparacion.js
 ```
+
+Además, `tools/validar.mjs` revisa todo el banco de preguntas (índice de respuesta
+correcta fuera de rango, enunciados duplicados, dificultades inválidas, cursos sin
+registrar en `index.html`) y `.claude/` contiene la configuración y los atajos para
+trabajar el proyecto con Claude Code.
 
 ---
 
