@@ -7,6 +7,16 @@ Léela antes de explorar el repositorio: suele contestar el «por qué» que el 
 ---
 
 
+
+## 2026-09-22 · Saca las herramientas genéricas del proyecto
+
+**Rama** `claude/inspiring-feynman-q95uzb` · **commit** `ad865d6`
+
+- El respaldo al disco y su hook no son de TechQuiz: valen para cualquier repositorio y no deben vivir aquí.
+- Se revierte 8ef3a39. Ahora viven en Protective, que se instala una vez por ordenador y funciona en todos los proyectos.
+- En este repositorio se queda solo lo que es de TechQuiz: validador, mapa, bitácora, generador de cursos, comandos y skill.
+
+**Ficheros** (commit ad865d6): `.claude/commands/registro.md` `.claude/hooks/session-start.sh` `.claude/hooks/stop.mjs` `.claude/settings.json` `CLAUDE.md` `tools/respaldo.mjs`
 ## 2026-09-22 · Añade instrucciones para el Proyecto de claude.ai
 
 **Rama** `claude/inspiring-feynman-q95uzb` · **commit** `503fb2b`
