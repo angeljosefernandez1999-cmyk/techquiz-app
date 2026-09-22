@@ -30,9 +30,9 @@ servidor. Se abre con doble clic o se publica en cualquier hosting.
 
 | Curso | Preguntas | Temas |
 |---|---|---|
-| 🖥️ Fundamentos y Hardware | 43 | Fundamentos, CPU/RAM/GPU, Almacenamiento, Placa base y PSU, Puertos y conectores |
+| 🖥️ Fundamentos y Hardware | 43 | Fundamentos, CPU / RAM / GPU, Almacenamiento, Placa base y PSU, Puertos y conectores |
 | 🌐 Redes y Cisco | 57 | Redes, Direccionamiento IP, Subnetting, Protocolos y puertos, Cableado, Cisco, Wi-Fi |
-| 💻 Sistemas Operativos | 37 | Windows, Linux, BIOS/UEFI |
+| 💻 Sistemas Operativos | 37 | Windows, Linux, BIOS / UEFI |
 | 🔐 Ciberseguridad | 30 | Malware, Ingeniería social, Contraseñas y acceso, Red y cifrado, Copias y buenas prácticas |
 | 🛠️ Reparación y Mantenimiento | 27 | Diagnóstico, Montaje, Portátiles y móviles, Impresoras y periféricos, Soporte al usuario |
 

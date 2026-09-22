@@ -46,40 +46,50 @@ Una pregunta = **una línea**, forma corta, comillas simples:
 - Un solo concepto por pregunta y enunciado autocontenido (nada de «según lo anterior»).
 - Reparto orientativo por curso: ~40 % `basico`, ~40 % `medio`, ~20 % `avanzado`.
 
-## 4. Curso nuevo
+## 4. No escribas el fichero a mano
 
-1. Crea `data/cursos/NN-slug.js` siguiendo la numeración existente:
+Prepara las preguntas en un JSON (en el directorio temporal, no en el repo) y deja que la
+herramienta genere el fichero con el formato canónico:
 
-```js
-/* Curso: Nombre del curso — banco de preguntas de TechQuiz */
-TQ.curso({
-  id: 'slug-del-curso',
-  nombre: 'Nombre del curso',
-  emoji: '📘',
-  desc: 'Una línea con los temas que cubre.',
-  autor: 'TechQuiz',
-  preguntas: [
-    /* ------------------------------ Categoría ---------------------------- */
-    { q: '…', o: ['…', '…', '…', '…'], r: 0, d: 'basico', c: 'Categoría', e: '…' }
+```json
+{
+  "nombre": "Bases de Datos",
+  "emoji": "🗄️",
+  "desc": "Modelo relacional, SQL y normalización.",
+  "preguntas": [
+    { "q": "…", "o": ["A", "B", "C", "D"], "r": 0, "d": "basico", "c": "SQL", "e": "…" }
   ]
-});
+}
 ```
 
-2. **Registra el script en `index.html`**, después de los otros cursos y antes de `app.js`:
-
-```html
-<script src="data/cursos/NN-slug.js"></script>
+```bash
+node tools/curso.mjs /tmp/…/curso.json            # crea el curso
+node tools/curso.mjs --en <id> /tmp/…/pregs.json  # amplía uno existente
+node tools/curso.mjs … --dry                      # enseña qué haría
 ```
 
-3. Si el curso pasa a ser relevante en la portada, actualiza la tabla de cursos del `README.md`
-   (nombre, nº de preguntas, temas).
+La herramienta se encarga de:
+
+- numerar el fichero (`06-…`), escribir la cabecera y agrupar por categoría con sus separadores;
+- escapar las comillas y dejar una pregunta por línea sin coma final de más;
+- **registrar el `<script>` en `index.html`** justo antes de `app.js`;
+- refrescar la tabla de cursos y los conteos del `README.md`;
+- descartar los enunciados que ya existan en ese curso;
+- regenerar el mapa y pasar el validador al terminar.
+
+Para ampliar, el JSON puede ser el array de preguntas suelto. Las categorías nuevas crean su
+separador al final; las existentes reciben las preguntas en su bloque.
+
+Edita un `data/cursos/*.js` a mano solo para retocar una pregunta concreta (localízala con
+`grep -n`). Para añadir, usa la herramienta.
 
 ## 5. Cerrar siempre con
 
 ```bash
 node tools/validar.mjs
+node tools/bitacora.mjs "Añade curso de X con N preguntas" "categorías cubiertas: …"
 ```
 
-Si falla, corrige lo que señale (`r` fuera de rango, enunciado duplicado, dificultad inválida,
-script no registrado) y vuelve a ejecutarlo hasta que salga `✓ Banco de preguntas válido`.
-Informa del nuevo total de preguntas al terminar.
+Si el validador falla, corrige lo que señale (`r` fuera de rango, enunciado duplicado, dificultad
+inválida, script no registrado) y repite hasta `✓ Banco de preguntas válido`. Informa del nuevo
+total de preguntas al terminar.

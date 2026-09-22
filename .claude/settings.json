@@ -1,8 +1,24 @@
 {
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/session-start.sh"
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Bash(node tools/validar.mjs)",
       "Bash(node tools/validar.mjs --resumen)",
+      "Bash(node tools/mapa.mjs)",
+      "Bash(node tools/mapa.mjs --resumen)",
+      "Bash(node tools/bitacora.mjs:*)",
+      "Bash(node tools/curso.mjs:*)",
       "Bash(git status)",
       "Bash(git status:*)",
       "Bash(git diff:*)",
@@ -24,6 +40,7 @@
       "Bash(wc:*)",
       "Bash(find:*)",
       "Bash(node --version)",
+      "Bash(node --check:*)",
       "Bash(python3 -m http.server:*)",
       "Bash(npx http-server:*)",
       "Read",

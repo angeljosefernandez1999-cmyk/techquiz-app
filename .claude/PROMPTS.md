@@ -46,8 +46,10 @@ Y al contrario, cuando **sí** quieras que me gaste el presupuesto:
 
 | Atajo | Qué hace |
 |---|---|
+| `/contexto` | Me pongo al día (mapa + bitácora + git) sin abrir código. Úsalo al empezar una sesión larga. |
+| `/registro [título]` | Cierro la tarea: valido, regenero el mapa y escribo la entrada de bitácora. |
 | `/validar` | Valida el banco de preguntas y corrige lo que falle. |
-| `/curso <tema> [nº]` | Crea un curso completo: fichero, `<script>` en `index.html`, README y validación. |
+| `/curso <tema> [nº]` | Crea un curso completo: fichero, `<script>` en `index.html`, README, mapa y validación. |
 | `/preguntas <curso> <nº> [subtema]` | Amplía un curso existente reutilizando sus categorías. |
 | skill `cursos` | Se activa sola cuando hablas de preguntas/cursos: formato, calidad de distractores, checklist. |
 
@@ -56,7 +58,25 @@ Otros útiles de Claude Code: `/clear` (vaciar contexto entre tareas — el que 
 `/init` (regenerar `CLAUDE.md` si el proyecto cambia mucho), `#` al inicio de un mensaje
 (guarda esa nota en `CLAUDE.md` para siempre).
 
-## 5. Trabajar desde GitHub (issues y PRs)
+## 5. El registro: por qué no tengo que releer el proyecto
+
+El repo guarda su propia memoria, y eso es lo que evita empezar de cero cada sesión:
+
+- **`.claude/MAPA.md`** — autogenerado. Cada función con su línea, las secciones del CSS, los ids
+  de cada pantalla y el inventario de cursos. ~90 líneas que sustituyen a leer 115 KB de código.
+  Lo regenera el hook de arranque, así que siempre está al día.
+- **`.claude/BITACORA.md`** — lo que se cambió, **por qué** y qué se descartó, tarea a tarea. El
+  código cuenta el qué; la bitácora cuenta el por qué, que es lo que se pierde entre sesiones.
+- **`.claude/hooks/session-start.sh`** — al abrir sesión regenera el mapa, valida el banco y me
+  deja un parte de 5 líneas. No tengo que preguntarte en qué estábamos.
+
+Lo que te toca a ti: cuando cierre una tarea sin registrar nada, dime **«/registro»**. Y si una
+decisión se tomó hablando conmigo y no quedó en el código (por qué ese temporizador, por qué esa
+categoría), pídeme que la anote: eso es exactamente lo que la bitácora tiene que capturar.
+
+Para retomar algo de hace semanas, empieza con **«/contexto»** en lugar de explicármelo otra vez.
+
+## 6. Trabajar desde GitHub (issues y PRs)
 
 Cuando me lanzas desde un issue o un comentario `@claude`, **el issue es el prompt**: no puedo
 preguntarte a mitad y no veo tu pantalla. Un issue bien escrito vale más que diez comentarios.
@@ -97,8 +117,11 @@ Modelo relacional · SQL básico · Consultas · Normalización · Copias
 - Para vigilar CI de un PR: pídemelo una vez («vigila el PR y arregla lo que falle») en lugar de
   reabrir sesión en cada fallo.
 
-## 6. Mantener esto al día
+## 7. Mantener esto al día
 
 Si algo se repite (una convención que siempre te recuerdo, un comando nuevo), añádelo a
 `CLAUDE.md` — pero **corto**: cada línea de ahí se paga en cada sesión. Lo largo va en este
 fichero o en la skill `cursos`, que solo se cargan cuando hacen falta.
+
+Y no edites `.claude/MAPA.md` a mano: se regenera con `node tools/mapa.mjs` y tu cambio se
+perdería. Lo que sí puedes editar a mano es la bitácora, si quieres corregir o ampliar una entrada.

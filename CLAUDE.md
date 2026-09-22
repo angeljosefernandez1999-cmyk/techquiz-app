@@ -34,7 +34,10 @@ assets/js/audio.js         window.TQAudio — motor de música/efectos (temas: m
 assets/js/data.js          window.TQData + window.TQ — cursos, selección, localStorage, historial
 assets/js/app.js           lógica de UI: pantallas, motor de partida, resultados, editor, historial
 data/cursos/NN-*.js        banco de preguntas, un fichero por curso (llaman a TQ.curso({...}))
-tools/validar.mjs          validador del banco (ver abajo)
+tools/validar.mjs          valida el banco de preguntas
+tools/mapa.mjs             regenera .claude/MAPA.md (índice del código)
+tools/bitacora.mjs         registra cambios en .claude/BITACORA.md
+tools/curso.mjs            crea/amplía cursos desde JSON y registra el <script>
 ```
 
 Orden de carga obligatorio en `index.html`: `audio.js` → `data.js` → `data/cursos/*.js` → `app.js`.
@@ -86,24 +89,46 @@ repo **usa siempre la forma corta**. Enunciados y opciones no se repiten (el val
 node tools/validar.mjs            # valida todo el banco: r fuera de rango, duplicados,
                                   # dificultades inválidas, scripts sin registrar en index.html
 node tools/validar.mjs --resumen  # solo conteos
+node tools/mapa.mjs               # regenera .claude/MAPA.md
+node tools/bitacora.mjs --ultimas 3   # últimas entradas del registro
 npx http-server -p 8080           # servidor local (o python3 -m http.server 8080)
 ```
 
 **Tras cualquier cambio en `data/cursos/**` o en `index.html`, ejecuta el validador.** Es la
 única comprobación del proyecto: no hay tests ni linter.
 
-## Protocolo de trabajo eficiente (ahorra contexto)
+## Antes de tocar nada: el registro
 
-- **No leas ficheros enteros.** `app.js` (38 KB), `style.css` (23 KB) y cada curso (12-18 KB)
-  son caros. Usa `grep -n` para localizar y `sed -n 'A,Bp'` para leer solo el bloque.
-- **Nunca leas un `data/cursos/*.js` completo** para añadir preguntas: son ~50-80 líneas de
-  texto denso. Añade al final del array o justo tras el comentario
-  `/* ----- Categoría ----- */` correspondiente, y comprueba con el validador.
-- **Para contar o inventariar** (preguntas por curso, categorías, dificultades) usa
-  `node tools/validar.mjs`, no leas los ficheros.
-- Antes de editar CSS, busca la sección: `grep -n '^/\*' assets/css/style.css`.
-- No repitas exploración ya hecha en la conversación y no expliques el plan antes de cada
-  edición pequeña: edita y resume al final.
+El repositorio lleva su propio índice y su propia memoria. **Úsalos en vez de explorar.**
+
+| Fichero | Qué contiene | Se actualiza con |
+|---|---|---|
+| `.claude/MAPA.md` | Cada función con su línea, secciones del CSS, ids por pantalla, inventario de cursos y categorías | `node tools/mapa.mjs` — **autogenerado, no editar a mano** |
+| `.claude/BITACORA.md` | Qué se cambió en cada tarea, por qué y en qué ficheros | `node tools/bitacora.mjs "Título" "detalle"` |
+
+El hook `.claude/hooks/session-start.sh` regenera el mapa y valida el banco al abrir la sesión,
+así que el mapa siempre está fresco. Si has movido código, regenéralo antes de fiarte de las líneas.
+
+### Orden de trabajo
+
+1. **Lee `.claude/MAPA.md`** (~90 líneas). Te dice fichero y línea: no hace falta explorar.
+2. Si el cambio roza algo ya decidido antes, `node tools/bitacora.mjs --ultimas 3`.
+3. Localiza con `grep -n`, lee **solo el bloque** con `sed -n 'A,Bp'`. Nunca un fichero entero:
+   `app.js` son ~10k tokens, `style.css` ~6k y cada curso 4-5k.
+4. Edita. **Para cursos y preguntas no escribas la plantilla a mano:** prepara el JSON y usa
+   `node tools/curso.mjs curso.json` (crea el fichero, lo registra en `index.html` y refresca el
+   README) o `node tools/curso.mjs --en <id> preguntas.json` para ampliar. Descarta duplicados solo.
+5. **Cierra siempre así:**
+   ```bash
+   node tools/validar.mjs
+   node tools/mapa.mjs
+   node tools/bitacora.mjs "Título del cambio" "qué y por qué" "decisión tomada"
+   ```
+   La entrada de bitácora es lo que evita que la siguiente sesión reconstruya el contexto leyendo
+   el repositorio. Anota **el por qué y lo descartado**, no lo que ya se ve en el diff.
+
+No repitas exploración ya hecha en la conversación y no expliques el plan antes de cada edición
+pequeña: edita y resume al final.
 
 ## Git
 
@@ -111,3 +136,5 @@ npx http-server -p 8080           # servidor local (o python3 -m http.server 808
 - Mensajes de commit **en español, en imperativo**, una línea de asunto concisa
   (ej. `Añade curso de bases de datos con 30 preguntas`).
 - No abras pull request salvo petición explícita.
+- `.claude/MAPA.md` y `.claude/BITACORA.md` **se commitean** con el cambio que los
+  provoca: son el registro del proyecto, no ficheros temporales.

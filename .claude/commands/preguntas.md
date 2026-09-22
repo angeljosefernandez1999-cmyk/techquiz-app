@@ -5,12 +5,14 @@ argument-hint: <curso> <nº> [categoría o subtema]
 
 Añade preguntas al curso indicado: **$ARGUMENTS**
 
-Sigue la skill `cursos`. Restricciones:
+Sigue la skill `cursos`. Camino corto:
 
-- Localiza el fichero con `ls data/cursos/` y mira el estilo con
-  `grep -n "q: '" <fichero> | sed -n '1,4p'`. **No leas el fichero entero.**
-- Reutiliza las categorías (`c`) que ya tenga el curso salvo que se pida una nueva.
-- Inserta cada pregunta bajo el comentario de su categoría; si es una categoría nueva, crea el
-  comentario separador al final del array.
-- Nada de repetir enunciados ya existentes: el validador los detecta y falla.
-- Termina con `node tools/validar.mjs` e indica el total de preguntas del curso antes y después.
+1. Mira `.claude/MAPA.md` para el `id` del curso y sus categorías actuales. **No leas el fichero del curso.**
+2. Para el estilo de redacción, 3 ejemplos bastan: `grep -n "q: '" <fichero> | sed -n '1,3p'`.
+3. Escribe las preguntas nuevas en un JSON temporal (array suelto de `{q,o,r,d,c,e}`).
+4. `node tools/curso.mjs --en <id> <ese json>` — las inserta en el bloque de su categoría,
+   descarta las repetidas, refresca README y mapa y valida.
+5. `node tools/bitacora.mjs "Amplía <curso> con N preguntas" "…"`.
+
+Reutiliza las categorías existentes salvo que se pida una nueva. Indica el total del curso antes
+y después.
