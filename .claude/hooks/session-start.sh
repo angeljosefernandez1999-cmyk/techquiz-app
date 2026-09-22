@@ -30,3 +30,6 @@ ULTIMA=$(grep -m1 '^## ' .claude/BITACORA.md 2>/dev/null | sed 's/^## //')
 [ -n "$ULTIMA" ] && echo "Último cambio registrado: ${ULTIMA}"
 
 echo "Al cerrar una tarea: node tools/bitacora.mjs \"Título\" \"qué cambió y por qué\"  ·  cursos: node tools/curso.mjs <json>"
+
+RESP=$(node tools/respaldo.mjs --donde 2>/dev/null | grep -c "estado:   accesible")
+[ "${RESP:-0}" = "1" ] && echo "Respaldo automático al disco activo (node tools/respaldo.mjs --donde para ver dónde)."

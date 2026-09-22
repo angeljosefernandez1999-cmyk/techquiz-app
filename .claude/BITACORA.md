@@ -7,6 +7,18 @@ Léela antes de explorar el repositorio: suele contestar el «por qué» que el 
 ---
 
 
+
+## 2026-09-22 · Añade respaldo automático al disco
+
+**Rama** `claude/inspiring-feynman-q95uzb` · **commit** `7bff89c`
+
+- Antes el registro solo vivía en el repo: si querías copia en disco había que instalar herramientas aparte.
+- tools/respaldo.mjs es autónomo: copia CLAUDE.md, README, bitácora y mapa, y genera repo.bundle (el repositorio completo, restaurable con git clone).
+- Ruta del disco: CLAUDE_RESPALDO_DIR, luego ~/.claude/respaldo.json, luego ~/ClaudeRespaldos.
+- Hook Stop con freno de 15 minutos: el evento se dispara en cada turno, no al final de la sesión.
+- En sesiones remotas el disco no es accesible: no hace nada, no falla y no ensucia la salida.
+
+**Ficheros** (sin commitear): `.claude/commands/registro.md` `.claude/hooks/session-start.sh` `.claude/hooks/stop.mjs` `.claude/settings.json` `CLAUDE.md` `tools/respaldo.mjs`
 ## 2026-09-22 · Añade instrucciones para el Proyecto de claude.ai
 
 **Rama** `claude/inspiring-feynman-q95uzb` · **commit** `503fb2b`

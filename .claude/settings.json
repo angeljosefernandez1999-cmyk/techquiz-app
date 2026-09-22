@@ -9,6 +9,16 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/stop.mjs\""
+          }
+        ]
+      }
     ]
   },
   "permissions": {
@@ -17,6 +27,9 @@
       "Bash(node tools/validar.mjs --resumen)",
       "Bash(node tools/mapa.mjs)",
       "Bash(node tools/mapa.mjs --resumen)",
+      "Bash(node tools/respaldo.mjs --silencioso)",
+      "Bash(node tools/respaldo.mjs --donde)",
+      "Bash(node tools/respaldo.mjs)",
       "Bash(node tools/bitacora.mjs:*)",
       "Bash(node tools/curso.mjs:*)",
       "Bash(git status)",

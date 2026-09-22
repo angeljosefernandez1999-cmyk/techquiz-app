@@ -1,7 +1,7 @@
 ---
 description: Pone al día el registro del proyecto (mapa + bitácora)
 argument-hint: [título del cambio]
-allowed-tools: Bash(node tools/mapa.mjs), Bash(node tools/validar.mjs), Bash(node tools/bitacora.mjs:*), Bash(git status:*), Bash(git diff:*), Bash(git log:*)
+allowed-tools: Bash(node tools/mapa.mjs), Bash(node tools/validar.mjs), Bash(node tools/bitacora.mjs:*), Bash(node tools/respaldo.mjs), Bash(git status:*), Bash(git diff:*), Bash(git log:*)
 ---
 
 Cierra la tarea actual dejando el registro al día:
@@ -10,6 +10,8 @@ Cierra la tarea actual dejando el registro al día:
 2. `node tools/mapa.mjs` — regenera el índice del código.
 3. Registra la entrada en la bitácora con `node tools/bitacora.mjs`, usando como título
    **$ARGUMENTS** (si está vacío, deduce el título de `git status` y `git diff --stat`).
+4. `node tools/respaldo.mjs` — copia el registro y el repositorio al disco. Si dice que no es
+   accesible, es una sesión remota: no es un error, dilo y sigue.
 
 En los detalles de la entrada escribe **el por qué y lo que se descartó**, no lo que ya se ve en
 el diff: qué problema resolvía, qué alternativa se rechazó y qué queda pendiente. Dos o tres
