@@ -38,7 +38,6 @@ tools/validar.mjs          valida el banco de preguntas
 tools/mapa.mjs             regenera .claude/MAPA.md (índice del código)
 tools/bitacora.mjs         registra cambios en .claude/BITACORA.md
 tools/curso.mjs            crea/amplía cursos desde JSON y registra el <script>
-tools/respaldo.mjs         copia el registro y el repo entero al disco de respaldo
 ```
 
 Orden de carga obligatorio en `index.html`: `audio.js` → `data.js` → `data/cursos/*.js` → `app.js`.
@@ -110,10 +109,6 @@ El repositorio lleva su propio índice y su propia memoria. **Úsalos en vez de 
 El hook `.claude/hooks/session-start.sh` regenera el mapa y valida el banco al abrir la sesión,
 así que el mapa siempre está fresco. Si has movido código, regenéralo antes de fiarte de las líneas.
 
-`.claude/hooks/stop.mjs` respalda al disco automáticamente (`tools/respaldo.mjs`), con freno de 15
-minutos porque el evento `Stop` se dispara en cada turno. En sesiones remotas no hay disco
-accesible: no hace nada y el registro viaja por git.
-
 ### Orden de trabajo
 
 1. **Lee `.claude/MAPA.md`** (~90 líneas). Te dice fichero y línea: no hace falta explorar.
@@ -128,7 +123,6 @@ accesible: no hace nada y el registro viaja por git.
    node tools/validar.mjs
    node tools/mapa.mjs
    node tools/bitacora.mjs "Título del cambio" "qué y por qué" "decisión tomada"
-   node tools/respaldo.mjs
    ```
    La entrada de bitácora es lo que evita que la siguiente sesión reconstruya el contexto leyendo
    el repositorio. Anota **el por qué y lo descartado**, no lo que ya se ve en el diff.
