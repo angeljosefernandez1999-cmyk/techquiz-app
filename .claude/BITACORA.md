@@ -6,6 +6,16 @@ Léela antes de explorar el repositorio: suele contestar el «por qué» que el 
 
 ---
 
+
+## 2026-09-22 · Añade instrucciones para el Proyecto de claude.ai
+
+**Rama** `claude/inspiring-feynman-q95uzb` · **commit** `503fb2b`
+
+- El registro del repo solo llega a Claude Code; chat y Cowork no tienen sistema de ficheros.
+- .claude/PROYECTO-CHAT.md es el texto para pegar en las instrucciones del proyecto de claude.ai: hace que el chat devuelva JSON que tools/curso.mjs aplica en un comando.
+- Reparto: redactar preguntas en el chat (barato), escribir ficheros y validar en Code.
+
+**Ficheros** (sin commitear): `.claude/PROYECTO-CHAT.md`
 ## 2026-09-22 · Añade registro del proyecto: mapa autogenerado, bitácora y generador de cursos
 
 **Rama** `claude/inspiring-feynman-q95uzb` · **commit** `fe0625b`
